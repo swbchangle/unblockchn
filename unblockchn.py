@@ -328,8 +328,8 @@ Unblock CHN 一键配置路由器
         cls.create_conf_files(unblock_youku.black_domains)
 
         # 复制 ipset 和 dnsmasq 规则配置文件到 jffs 配置目录
-        #cls.cp_ipset_conf_to_jffs()
-        #cls.cp_dnsmasq_conf_to_jffs()
+        cls.cp_ipset_conf_to_jffs()
+        cls.cp_dnsmasq_conf_to_jffs()
 
         # 配置 ipset 和 iptables
         cls.setup_ipset_iptables()
@@ -675,6 +675,7 @@ Unblock CHN 还原路由器为未配置状态
 
     @classmethod
     def cp_ipset_conf_to_jffs(cls):
+        return True
         """复制 ipset 规则配置文件到 jffs 配置目录"""
         ipset_conf_path = os.path.join(CONFIGS_DIR_PATH, "ipset.rules")
         if os.path.isfile(ipset_conf_path):
@@ -685,6 +686,7 @@ Unblock CHN 还原路由器为未配置状态
 
     @classmethod
     def cp_dnsmasq_conf_to_jffs(cls):
+        return True
         """复制 dnsmasq 规则配置文件到 jffs 配置目录"""
         dnsmasq_conf_path = os.path.join(CONFIGS_DIR_PATH, "dnsmasq.conf.add")
         if os.path.isfile(dnsmasq_conf_path):
