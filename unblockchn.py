@@ -328,8 +328,8 @@ Unblock CHN 一键配置路由器
         cls.create_conf_files(unblock_youku.black_domains)
 
         # 复制 ipset 和 dnsmasq 规则配置文件到 jffs 配置目录
-        cls.cp_ipset_conf_to_jffs()
-        cls.cp_dnsmasq_conf_to_jffs()
+        #cls.cp_ipset_conf_to_jffs()
+        #cls.cp_dnsmasq_conf_to_jffs()
 
         # 配置 ipset 和 iptables
         cls.setup_ipset_iptables()
