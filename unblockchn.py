@@ -536,10 +536,10 @@ Unblock CHN 还原路由器为未配置状态
         cls.start_ss_redir()
 
         # 保存 ss-redir 启动命令到路由器的 services-start 启动脚本中
-        #cmd = f'{SS_REDIR_PATH} -c {SHADOWSOCKS_DIR_PATH}/"$(nvram get unblockchn_ss_conf)".json -f {SS_REDIR_PID_PATH}'
-        #comment = "# ss-redir"
-        #cls.append_to_script(SERVICES_START_SCRIPT_PATH, comment, cmd)
-        #elogger.info(f"✔ 保存 ss-redir 启动命令到路由器的 services-start 启动脚本中：{SERVICES_START_SCRIPT_PATH}")
+        cmd = f'{SS_REDIR_PATH} -c {SHADOWSOCKS_DIR_PATH}/"$(nvram get unblockchn_ss_conf)".json -f {SS_REDIR_PID_PATH}'
+        comment = "# ss-redir"
+        cls.append_to_script(SERVICES_START_SCRIPT_PATH, comment, cmd)
+        elogger.info(f"✔ 保存 ss-redir 启动命令到路由器的 services-start 启动脚本中：{SERVICES_START_SCRIPT_PATH}")
 
     @classmethod
     def setup_ipset_iptables(cls):

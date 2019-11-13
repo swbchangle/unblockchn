@@ -54,9 +54,9 @@ IPSET_CONF_JFFS_PATH = os.path.join(DIR_PATH, "configs/ipset.rules")
 DNSMASQ_CONF_JFFS_PATH = os.path.join(DIR_PATH, "configs/dnsmasq.conf.add")
 
 # services-start 启动脚本路径
-SERVICES_START_SCRIPT_PATH = "/jffs/scripts/services-start"
+SERVICES_START_SCRIPT_PATH = os.path.join(DIR_PATH, "scripts/services-start")
 # nat-start 启动脚本路径
-NAT_START_SCRIPT_PATH = "/jffs/scripts/nat-start"
+NAT_START_SCRIPT_PATH = os.path.join(DIR_PATH, "scripts/nat-start")
 
 # dnsmasq 重启命令
 DNSMASQ_RESTART_CMD = "service dnsmasq restart"
