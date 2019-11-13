@@ -59,7 +59,7 @@ SERVICES_START_SCRIPT_PATH = os.path.join(DIR_PATH, "configs/services-start")
 NAT_START_SCRIPT_PATH = os.path.join(DIR_PATH, "configs/nat-start")
 
 # dnsmasq 重启命令
-DNSMASQ_RESTART_CMD = "service dnsmasq restart"
+DNSMASQ_RESTART_CMD = "/etc/init.d/dnsmasq restart"
 
 # 定时每天几点更新规则
 RENEW_TIME = 3
