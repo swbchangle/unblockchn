@@ -717,7 +717,7 @@ Unblock CHN 还原路由器为未配置状态
         """添加每日更新规则的 cron 定时任务"""
         unblockchn_path = os.path.realpath(__file__)
         renew_cmd = f"0 {RENEW_TIME} * * * {PYTHON3_PATH} {unblockchn_path} router renew"
-        cron_cmd = f'cru a unblockchn_renew "{renew_cmd}"'
+        cron_cmd = f'echo "{renew_cmd}" | crontab -'
         try:
             subprocess.check_call(cron_cmd, shell=True)
         except subprocess.CalledProcessError as e:
@@ -735,7 +735,7 @@ Unblock CHN 还原路由器为未配置状态
     @classmethod
     def remove_renew_cron_job(cls):
         """移除每日更新规则的 cron 定时任务"""
-        cmd = "cru d unblockchn_renew"
+        cmd = "crontab -r"
         subprocess.check_call(cmd, shell=True)
         elogger.info(f"✔ 删除每日更新规则的 cron 定时任务：{cmd}")
 
