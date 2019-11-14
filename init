@@ -6,7 +6,7 @@ START=99
  
 start() {        
         modprobe xt_set
-        ipset restore /root/unblockchn/configs/ipset.rules
+        ipset restore < /root/unblockchn/configs/ipset.rules
         python3 /root/unblockchn/unblockchn.py router on
         echo "0 3 * * * /usr/bin/python3 /root/unblockchn/unblockchn.py router renew" | crontab -
 }                 
@@ -14,6 +14,5 @@ start() {
 stop() {          
         python3 /root/unblockchn/unblockchn.py router off
         ipset destroy chn
-        echo "0 3 * * * /usr/bin/python3 /root/unblockchn/unblockchn.py router renew" | crontab -r -
-        
+        echo "0 3 * * * /usr/bin/python3 /root/unblockchn/unblockchn.py router renew" | crontab -r -    
 }
