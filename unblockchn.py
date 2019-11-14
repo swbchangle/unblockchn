@@ -939,6 +939,11 @@ Unblock CHN 还原路由器为未配置状态
 
     @classmethod
     def restart_dnsmasq(cls):
+        if os.path.isfile(DNSMASQ_CONF_JFFS_PATH):
+            os.system(f'echo conf-file={DNSMASQ_CONF_JFFS_PATH} >> /etc/dnsmasq.conf')
+        else:
+            os.system(f'sed -i "/conf-file={DNSMASQ_CONF_JFFS_PATH}/d" /etc/dnsmasq.conf')
+
         """重启 dnsmasq"""
         subprocess.check_call(DNSMASQ_RESTART_CMD, shell=True, stdout=subprocess.DEVNULL)
         elogger.info(f"✔ 重启 dnsmasq：{DNSMASQ_RESTART_CMD}")
