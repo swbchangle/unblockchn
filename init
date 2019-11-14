@@ -1,0 +1,19 @@
+#!/bin/sh /etc/rc.common
+# Example script
+# Copyright (C) 2007 OpenWrt.org
+ 
+START=99
+ 
+start() {        
+        modprobe xt_set
+        ipset restore /root/unblockchn/configs/ipset.rules
+        python3 /root/unblockchn/unblockchn.py router on
+        echo "0 3 * * * /usr/bin/python3 /root/unblockchn/unblockchn.py router renew" | crontab -
+}                 
+ 
+stop() {          
+        python3 /root/unblockchn/unblockchn.py router off
+        ipset destroy chn
+        echo "0 3 * * * /usr/bin/python3 /root/unblockchn/unblockchn.py router renew" | crontab -r -
+        
+}
